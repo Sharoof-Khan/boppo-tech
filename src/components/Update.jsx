@@ -25,7 +25,8 @@ const UpdateUser = () => {
     }) 
 
      useEffect(() => {
-        axios.get('http://localhost:4000/user')
+        // axios.get('http://localhost:4000/user')
+        axios.get('https://boppotech.herokuapp.com/user')
             // .then(res => res.json())
             // .then(d => console.log(d.data,'userData'))
             .then(d => setData(d.data))
@@ -52,7 +53,8 @@ const UpdateUser = () => {
         // const users = [...data, newUser]
         // setData(users)
 
-        axios.patch(`http://localhost:4000/user/2`, newUser)
+        // axios.patch(`http://localhost:4000/user/1`, newUser)
+        axios.patch(`https://boppotech.herokuapp.com/user/1`, newUser)
 
           alert('Data Updated')
         navigate('/')

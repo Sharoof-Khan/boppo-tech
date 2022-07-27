@@ -19,7 +19,7 @@ const Form = () => {
     }) 
 
      useEffect(() => {
-        axios.get('http://localhost:4000/user')
+        axios.get('https://boppotech.herokuapp.com/user')
             // .then(res => res.json())
             // .then(d => console.log(d.data,'userData'))
             .then(d => setData(d.data))
@@ -43,7 +43,7 @@ const Form = () => {
         };
 
 
-        axios.post('http://localhost:4000/user', newUser)
+        axios.post('https://boppotech.herokuapp.com/user', newUser)
 
           alert('Data Added')
         navigate('/')
