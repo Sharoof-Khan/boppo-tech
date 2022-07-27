@@ -1,0 +1,91 @@
+.container{
+
+}
+
+.addUser{
+    margin-top:     10px;
+    margin-bottom: 10px;
+    height: 35px;
+    width: 150px;
+    background-color: orange;
+    color: white;
+    border: none;
+    float: right;
+    margin-right: 2%;
+    cursor: pointer;
+
+    border-radius: 5px;
+
+   
+}
+
+.container>table{
+    margin-top: 5%;
+    clear: both;
+
+}
+.container>table>thead>tr>{
+    /* margin-top: 5%; */
+    width: 90%;
+
+}
+.container>table>thead>tr>th{
+    background-color: orange;
+    height: 30px;
+    padding: 10px;
+    width:20%;
+    border-radius: 5px;
+    color: white;
+    font-weight: 400;
+
+
+}
+
+.container>table>tbody>tr>td{
+    /* background-color: green; */
+    /* height: 30px; */
+    padding: 10px;
+    width:20%;
+    border-radius: 5px;
+    color: black;
+    font-weight: 400;
+
+    border: 1px solid gray;
+}
+
+.container>table>tbody>tr>:last-child,.container>table>tbody>tr>:nth-child(7){
+    /* background-color: lightgray; */
+    border: none;
+}
+
+.editData>span{
+    font-size: small;
+    margin-left: 5px;
+    color: orange;
+
+}
+
+.editData , .deleteData{
+    cursor: pointer;
+}
+.editData>img{
+    width: 15px;
+    height: 15px;
+    /* cursor: pointer; */
+}
+
+.deleteData{
+    display: flex;
+    flex-direction: row;
+}
+.deleteData>img{
+    width: 15px;
+    height: 15px;
+    }
+.deleteData>span{
+    font-size: small;
+    margin-left: 5px;
+    color: orange;
+
+}
+

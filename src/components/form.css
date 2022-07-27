@@ -1,0 +1,93 @@
+.formContainer{
+    width: 100%;
+    min-height: 90vh;
+    margin-top: 100px;
+}
+
+form{
+    width:70%;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    display:grid;
+    grid-template-columns: 50% 50%;
+} 
+
+
+form>div{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+form>div>input{
+    width: 30vw;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid orange;
+    margin-top: 5%;
+    outline: none;
+}
+
+form>div>label{
+  
+    /* color: red; */
+    position: absolute;
+   
+}
+
+.age{
+    width: 80px;
+    
+}
+
+form>button{
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid orange;
+    margin-left:85% ;
+    margin-top: 5%;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form>button:hover{
+    background-color: white;
+    color: orange;
+}
+
+
+.passwordeye{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top: -35%;
+    left: 80%;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 600px){
+    form{
+        width: 100%;
+        margin: auto;
+    }
+form>div>input {
+    margin-top: 10%;
+}
+.passwordeye {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    top: -35%;
+    /* right: 20%; */
+    left: 50%;
+}
+
+    
+}
+
+
