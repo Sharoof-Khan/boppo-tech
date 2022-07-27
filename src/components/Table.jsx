@@ -15,15 +15,12 @@ const Table = () => {
     
     
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:4000/user/${id}`)
-            // .then(res => console.log(res.data))
-            // .then(d => setData(d.data))
+        // axios.delete(`http://localhost:4000/user/${id}`)
+        axios.delete(`https://boppotech.herokuapp.com/user/${id}`)
+            
     }
 
-    // const handleCurrent = (id) => {
-    //     axios.post(`http://localhost:4000/current/${id}`)
-
-    // }
+  
 
     
 
@@ -51,7 +48,7 @@ const Table = () => {
                      data && data.map((item,index) => {
                           return (
                               <tr key={item.id}>
-                                  <td>{ item.id}</td>
+                                  <td>{ index+1}</td>
                                   <td>{item.firstName}</td>
                                   <td>{item.lastName}</td>
                                   <td>{item.email}</td>
