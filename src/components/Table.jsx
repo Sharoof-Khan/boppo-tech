@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import './table.css';
 import {Link } from 'react-router-dom'
 import axios from 'axios';
-import UpdateUser from './Update';
 import {useNavigate} from 'react-router-dom'
 const Table = () => {
     const [data, setData] = useState()
-    const [updateId, setUpdateId] = useState(null)
     
     const navigate = useNavigate()
 
@@ -30,7 +28,7 @@ const Table = () => {
     const handleUpdate = (id) => {
         // console.log(id, 'id');
         
-        // let currId  = 
+        
         localStorage.setItem('id', id)
         navigate('/update')
     }
@@ -54,6 +52,7 @@ const Table = () => {
                       <th>Age</th>
                       <th>Update</th>
                       <th>Delete</th>
+                      {/* <th>ID</th> */}
                 </tr>
                 </thead>
               <tbody>
@@ -85,7 +84,8 @@ const Table = () => {
                                             <span>Delete</span>  
                                           
                                   </div>
-                                  </td>
+                                 </td>
+                                 {/* <td>{ item.id}</td> */}
                                  </tr>
                           )
                       })

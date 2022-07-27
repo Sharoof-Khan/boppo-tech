@@ -6,13 +6,12 @@ import axios from 'axios'
 const UpdateUser = () => {
 
     
-    const [data, setData] = useState()
     const [updateId,setUpdateId] = useState(null)
     const [visible, setVisible] = useState(false)
 
     const navigate = useNavigate()
 
-    const [addUserData, setAddUserData] = useState({
+    const [updateUserData, setUpdateUserData] = useState({
         firstName: '',
         lastName: '',
         email: '',
@@ -26,38 +25,32 @@ const UpdateUser = () => {
         // console.log('currId:', currId)
         
         setUpdateId(currId)
-
+        
     },[])
 
 
-
-
-     useEffect(() => {
-        // axios.get('http://localhost:4000/user')
-        axios.get('https://boppotech.herokuapp.com/user')
-            .then(d => setData(d.data))
-    }
-         , [data])
-    
     
 
-
-
+    
+    
+    
+    
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-     
+        
         const newUser = {
-             
-            firstName: addUserData.firstName,
-            lastName: addUserData.lastName,
-            email: addUserData.email,
-            phoneNumber: addUserData.phoneNumber,
-            age: addUserData.age
+             id: updateId,
+            firstName: updateUserData.firstName,
+            lastName: updateUserData.lastName,
+            email: updateUserData.email,
+            phoneNumber: updateUserData.phoneNumber,
+            age: updateUserData.age
 
         };
 
         axios.patch(`https://boppotech.herokuapp.com/user/${updateId}`, newUser)
-
+        
         alert('Data Updated')
         localStorage.removeItem('id')
         navigate('/')
@@ -67,45 +60,46 @@ const UpdateUser = () => {
     const handleVisiblity = () => {
         setVisible(!visible)
     }
-
+    
     const handleChange = (e) => {
-        setAddUserData({
-            ...addUserData,
+        setUpdateUserData({
+            ...updateUserData,
             [e.target.name]: e.target.value
         })
     }
+    // console.log(data,'dataFromDB');
 
   return (
       <div className='formContainer'>
           <form >
               <div>
                   <label >First Name</label>
-                  <input type="text" name='firstName' onChange = {handleChange} placeholder='First Name' required />                  
+                  <input type="text" name='firstName' value={updateUserData.firstName}  onChange = {handleChange} placeholder='First Name' required />                  
              </div>
               <div>
                  <label >Last Name</label>
-                  <input type="text" name='lastName' onChange = {handleChange} placeholder='Last Name' required />                
+                  <input type="text" name='lastName' value={updateUserData.lastName} onChange = {handleChange} placeholder='Last Name' required />                
               </div>
 
               <div>
                   <label >Email</label>
-                  <input type='email' name='email' onChange = {handleChange} placeholder='Email' required />
+                  <input type='email' name='email' value={updateUserData.email} onChange = {handleChange} placeholder='Email' required />
               </div>
 
               <div>
                   <label >Password</label>
-                  <input type={visible?"text": "password"} name='password' onChange = {handleChange} placeholder='Password' required />
+                  <input type={visible?"text": "password"} name='password'  onChange = {handleChange} placeholder='Password' required />
                   <img className='passwordeye' onClick={handleVisiblity} src="https://i.postimg.cc/Sx44zQjF/eye-svgrepo-com.png" alt="password eye" />
               </div>
 
               <div>
                   <label > Contact No</label>
-                  <input type="number" name='phoneNumber'  onChange = {handleChange} placeholder='Mobile No' required/>              
+                  <input type="number" name='phoneNumber' value={updateUserData.phoneNumber} onChange = {handleChange} placeholder='Mobile No' required/>              
               </div>
 
               <div>
                   <label > Age</label>
-                  <input type="number" name='age' onChange = {handleChange} placeholder='Age' required className='age' />      
+                  <input type="number" name='age'  value={updateUserData.age}onChange = {handleChange} placeholder='Age' required className='age' />      
               </div>
               <button onClick={handleSubmit} type='submit'>Update User</button>
           </form>

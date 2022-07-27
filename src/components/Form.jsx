@@ -2,6 +2,7 @@ import React, {  useEffect, useState } from 'react'
 import './form.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { nanoid } from 'nanoid'
 
 const Form = () => {
     const [data, setData] = useState()
@@ -29,8 +30,8 @@ const Form = () => {
 
       
         const newUser = {
-            // id: nanoid(3),
-             
+            
+            id: nanoid(3),
             firstName: addUserData.firstName,
             lastName: addUserData.lastName,
             email: addUserData.email,
