@@ -2,19 +2,16 @@ import React, {  useEffect, useState } from 'react'
 import './form.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {useParams} from 'react-router-dom'
 
 const UpdateUser = () => {
 
-    const id = useParams()
-    // console.log(id,'useParam');
-
-
+    
     const [data, setData] = useState()
+    const [updateId,setUpdateId] = useState(null)
+    const [visible, setVisible] = useState(false)
 
     const navigate = useNavigate()
 
-    const [visible, setVisible] = useState(false)
     const [addUserData, setAddUserData] = useState({
         firstName: '',
         lastName: '',
@@ -24,22 +21,32 @@ const UpdateUser = () => {
 
     }) 
 
+    useEffect(() => {
+        const currId = localStorage.getItem('id')
+        // console.log('currId:', currId)
+        
+        setUpdateId(currId)
+
+    },[])
+
+
+
+
      useEffect(() => {
         // axios.get('http://localhost:4000/user')
         axios.get('https://boppotech.herokuapp.com/user')
-            // .then(res => res.json())
-            // .then(d => console.log(d.data,'userData'))
             .then(d => setData(d.data))
     }
-    , [data])
+         , [data])
+    
+    
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('submit')
-
-      
+     
         const newUser = {
-            // id: nanoid(3),
              
             firstName: addUserData.firstName,
             lastName: addUserData.lastName,
@@ -49,22 +56,14 @@ const UpdateUser = () => {
 
         };
 
-        // setData([...data, newUser])
-        // const users = [...data, newUser]
-        // setData(users)
+        axios.patch(`https://boppotech.herokuapp.com/user/${updateId}`, newUser)
 
-        // axios.patch(`http://localhost:4000/user/1`, newUser)
-        axios.patch(`https://boppotech.herokuapp.com/user/1`, newUser)
-
-          alert('Data Updated')
+        alert('Data Updated')
+        localStorage.removeItem('id')
         navigate('/')
 
     }
         
-        // axios.patch(`http://localhost:4000/user`, newUser)
-
-
-
     const handleVisiblity = () => {
         setVisible(!visible)
     }
@@ -75,9 +74,6 @@ const UpdateUser = () => {
             [e.target.name]: e.target.value
         })
     }
-
-
-    // console.log(addUserData,'userData');
 
   return (
       <div className='formContainer'>

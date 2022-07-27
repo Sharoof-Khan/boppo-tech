@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './table.css';
 import {Link } from 'react-router-dom'
 import axios from 'axios';
+import UpdateUser from './Update';
+import {useNavigate} from 'react-router-dom'
 const Table = () => {
     const [data, setData] = useState()
+    const [updateId, setUpdateId] = useState(null)
+    
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get('https://boppotech.herokuapp.com/user')
@@ -16,11 +21,19 @@ const Table = () => {
     
     const handleDelete = (id) => {
         // axios.delete(`http://localhost:4000/user/${id}`)
+
         axios.delete(`https://boppotech.herokuapp.com/user/${id}`)
+        alert('User Deleted')
             
     }
 
-  
+    const handleUpdate = (id) => {
+        // console.log(id, 'id');
+        
+        // let currId  = 
+        localStorage.setItem('id', id)
+        navigate('/update')
+    }
 
     
 
@@ -29,6 +42,7 @@ const Table = () => {
           <Link to={'/adduser'}>
           <button className='addUser'  >Add User</button>
           </Link>
+
             <table>
                 <thead>
                   <tr>
@@ -44,9 +58,10 @@ const Table = () => {
                 </thead>
               <tbody>
                   {
-                    //   data?.length === 0 &&  <tr><td colSpan="7">No Data</td></tr> 
+                 
                      data && data.map((item,index) => {
-                          return (
+                        
+                         return (
                               <tr key={item.id}>
                                   <td>{ index+1}</td>
                                   <td>{item.firstName}</td>
@@ -55,13 +70,13 @@ const Table = () => {
                                   <td>{item.phoneNumber}</td>
                                   <td>{item.age}</td>
                                   <td> 
-                                        <Link to={`/update`}>
                                         {/* <Link to={`/update`}> */}
-                                    <div className='editData' >
+                                     
+                                    <div className='editData'  onClick={() => handleUpdate(item.id)} >
                                           <img src="https://i.postimg.cc/TPyhRPWn/edit-icon.png" alt="edit" />
                                           <span>Edit</span>
                                           </div>
-                                          </Link>
+                                          {/* </Link> */}
                                   </td>
                                   
                                       <td>
@@ -71,13 +86,14 @@ const Table = () => {
                                           
                                   </div>
                                   </td>
-                              </tr>
+                                 </tr>
                           )
                       })
                   }
                  
                 </tbody>
-            </table>
+              </table>
+              
         </div>
     );
   

@@ -20,15 +20,12 @@ const Form = () => {
 
      useEffect(() => {
         axios.get('https://boppotech.herokuapp.com/user')
-            // .then(res => res.json())
-            // .then(d => console.log(d.data,'userData'))
             .then(d => setData(d.data))
     }
     , [data])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('submit')
 
       
         const newUser = {
