@@ -1,8 +1,6 @@
 import React, {  useEffect, useState } from 'react'
 import './form.css'
 import { useNavigate } from 'react-router-dom'
-import { nanoid } from 'nanoid'
-import storeData from '../data.json'
 import axios from 'axios'
 
 const Form = () => {
@@ -44,9 +42,6 @@ const Form = () => {
 
         };
 
-        // setData([...data, newUser])
-        // const users = [...data, newUser]
-        // setData(users)
 
         axios.post('http://localhost:4000/user', newUser)
 

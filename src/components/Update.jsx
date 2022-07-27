@@ -1,15 +1,13 @@
 import React, {  useEffect, useState } from 'react'
 import './form.css'
 import { useNavigate } from 'react-router-dom'
-import { nanoid } from 'nanoid'
-import storeData from '../data.json'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
 
 const UpdateUser = () => {
 
     const id = useParams()
-    console.log(id,'useParam');
+    // console.log(id,'useParam');
 
 
     const [data, setData] = useState()

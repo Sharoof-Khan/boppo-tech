@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import data1 from '../data.json'
 import './table.css';
 import {Link } from 'react-router-dom'
 import axios from 'axios';
