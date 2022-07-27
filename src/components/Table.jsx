@@ -6,7 +6,7 @@ const Table = () => {
     const [data, setData] = useState()
 
     useEffect(() => {
-        axios.get('http://localhost:4000/user')
+        axios.get('https://boppotech.herokuapp.com/user')
             // .then(res => res.json())
             // .then(d => console.log(d.data,'userData'))
             .then(d => setData(d.data))
@@ -24,6 +24,8 @@ const Table = () => {
     //     axios.post(`http://localhost:4000/current/${id}`)
 
     // }
+
+    
 
   return (
       <div className="container">
@@ -45,6 +47,7 @@ const Table = () => {
                 </thead>
               <tbody>
                   {
+                    //   data?.length === 0 &&  <tr><td colSpan="7">No Data</td></tr> 
                      data && data.map((item,index) => {
                           return (
                               <tr key={item.id}>
